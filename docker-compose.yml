@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./app:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+      VITE_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhZG1pbiIsImV4cCI6MTczNzE5NDYyNSwiaXNzIjoiNzA3YTVmNmUzMzc3NjQ2MzM5NjY2MTZlOWU0MzcyZmYzZTVhMDI4ZjhlN2RkYmVmYTE5Mjk1MjU4NmIwOTc4MyIsImp0aSI6IjEiLCJzZWN0aW9ucyI6WyJmdWxsX2FsbF9hY2Nlc3MiXSwic3ViIjoiMSJ9.m8rOvXCuKrG_8lhGUg8ZRzMFTc_Jc1668mnQv38gCeA"
+      VITE_API_URL: "http://91.243.71.100:8080/api/web-api-gateway/v1"
